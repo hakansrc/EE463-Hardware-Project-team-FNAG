@@ -3,8 +3,11 @@ int percentage = 0;
 void setup() {
   pinMode(9,OUTPUT);
   digitalWrite(9,LOW);
-  setPwmFrequency(9,8);
+  setPwmFrequency(9,1);
   Serial.begin(115200);
+  pinMode(10,OUTPUT);
+  digitalWrite(10,LOW);
+  setPwmFrequency(10,1);
 
 }
 
@@ -13,11 +16,12 @@ void loop() {
 
   //delay(500);
   pwm_value = analogRead(A0);
-  percentage = map(pwm_value,0,1023,38,215);
+  percentage = map(pwm_value,0,1023,13,242);
   Serial.print(percentage); 
   Serial.print('\n');
  // delay(100);
   analogWrite(9,percentage);
+  analogWrite(10,percentage);
 
 }
 void setPwmFrequency(int pin, int divisor) {
